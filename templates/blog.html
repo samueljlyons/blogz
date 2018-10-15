@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if entries %}
+    {% for entry in entries %}
+        <p><a href ="/blog?id={{ entry.id }}" style="font-size:150%"> {{ entry.title }} </a> 
+            <div>{{ entry.body }}</div>
+        </p>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>What's Up With The World</h1>
+    <form method='post'>
+        <label>
+            Entry Name:
+            <input type="text" name='entry name:' />
+        </label>
+        <p><label>
+            Entry:
+            <textarea name='entry:' rows="10" columns="80"></textarea>
+        </label></p>
+        <input type="submit" value='Submit Entry' />
+    </form>
+
+    <hr />
+
+    {% if entry %}
+            {% for entry in entries %}
+            <p>{{entry.body}}
+                <form method="POST" action="/submit-entry" style="display:inline-block;">
+                    <input type="text" name="entry-id" value="{{entry.id}}" />
+                    
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+
+    {% endif %}
+
+    <hr />
+
+    <h2>Completed</h2>
+
+    <ul>
+        {% for task in completed_tasks %}
+        <li>{{task.name}}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
